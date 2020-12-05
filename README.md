@@ -8,4 +8,4 @@ Convert your model to `tfjs` using the [converter script](https://github.com/mbe
 
 ## tfjs-node-lambda
 
-Helper packages to `@tensorflow/tfjs-node` in a lambda. [Learn more](https://www.npmjs.com/package/tfjs-node-lambda).
+Helper packages to use `@tensorflow/tfjs-node` in a lambda. [Learn more](https://www.npmjs.com/package/tfjs-node-lambda).
