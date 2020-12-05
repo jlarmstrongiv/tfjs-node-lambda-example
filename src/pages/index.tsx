@@ -69,21 +69,21 @@ export default function Home() {
           npm package.
         </p>
 
-        <div className={styles.card}>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            identityImage(imageUrl).then((results) => setResults(results));
+          }}
+          className={styles.card}
+        >
           <input
             type="text"
             placeholder="Image URL"
             onChange={(event) => setImageUrl(event.target.value)}
             value={imageUrl}
           />
-          <button
-            onClick={() => {
-              identityImage(imageUrl).then((results) => setResults(results));
-            }}
-          >
-            Identify
-          </button>
-        </div>
+          <button type="submit">Identify</button>
+        </form>
         {imageUrl && (
           <img
             src={imageUrl}
