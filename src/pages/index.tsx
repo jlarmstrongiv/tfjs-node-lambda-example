@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Rubber duck or a bunch of rocks?</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
