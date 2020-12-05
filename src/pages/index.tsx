@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 
-const DEFAULT_ATTEMPTS = 10;
+const INITIAL_ATTEMPTS = 10;
 
 export default function Home() {
   const [loading, setLoading] = React.useState(false);
@@ -11,24 +11,28 @@ export default function Home() {
   const [imageUrl, setImageUrl] = React.useState("");
   const [results, setResults] = React.useState("");
 
-  const identityImage = async (imageUrl, attempts = DEFAULT_ATTEMPTS) => {
-    if (attempts < 0) {
-      setError(`${DEFAULT_ATTEMPTS} attempts failed`);
-      setLoading(false);
-    }
-    try {
-      setResults("");
-      setError("");
-      setLoading(true);
-      const response = await axios.post(`/api/identify`, {
-        imageUrl,
-      });
-      setLoading(false);
-      return response.data.results;
-    } catch (error) {
-      return identityImage(imageUrl, attempts - 1);
-    }
-  };
+  const identifyImage = React.useCallback(
+    async (imageUrl, attempts = INITIAL_ATTEMPTS) => {
+      if (attempts < 0) {
+        setError(`${INITIAL_ATTEMPTS} attempts failed`);
+        setLoading(false);
+        return;
+      }
+      try {
+        setResults("");
+        setError("");
+        setLoading(true);
+        const response = await axios.post(`/api/identify`, {
+          imageUrl,
+        });
+        setLoading(false);
+        return response.data.results;
+      } catch (error) {
+        return identifyImage(imageUrl, attempts - 1);
+      }
+    },
+    []
+  );
 
   return (
     <div className={styles.container}>
@@ -72,7 +76,7 @@ export default function Home() {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            identityImage(imageUrl).then((results) => setResults(results));
+            identifyImage(imageUrl).then((results) => setResults(results));
           }}
           className={styles.card}
         >
