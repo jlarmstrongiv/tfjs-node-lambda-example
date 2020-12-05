@@ -1,5 +1,7 @@
 # tfjs-node-lambda-example
 
+Check out the [live example](https://tfjs-node-lambda-example.vercel.app/)!
+
 ## Lobe.ai
 
 Free app to create custom machine learning models to classify images. [Download](https://lobe.ai/).
