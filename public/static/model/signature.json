@@ -1,0 +1,24 @@
+{
+  "doc_id": "746e07b6-6cdb-4507-89bb-0cab9aba6b22",
+  "doc_name": "demo-classification",
+  "doc_version": "03f08bc32bd51d2a6803c489879548da",
+  "format": "tf_js",
+  "version": 2,
+  "inputs": {
+    "Image": {
+      "dtype": "float32",
+      "shape": [null, 224, 224, 3],
+      "name": "Image:0"
+    }
+  },
+  "outputs": {
+    "Confidences": {
+      "dtype": "float32",
+      "shape": [null, 2],
+      "name": "1362df66-4dc0-4097-8c3e-81132d31d11a/dense_2/Softmax:0"
+    }
+  },
+  "tags": ["serve"],
+  "classes": { "Label": ["rock", "rubber-duck"] },
+  "filename": "model.json"
+}
